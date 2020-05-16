@@ -15,21 +15,79 @@
 
 </head>
 <body>
-  <div class="top-page centerize">
-    <div class="background"></div>
+  <div class="top-page centerize" 
+        v-cloak :class="{centerize: !contentOverflow}">
+    <div class="background" 
+          v-bind:class="{hidden: backgroundHidden}" 
+          v-bind:style="{backgroundImage: 'url(' + (portrait ? active.thumbPortrait : active.thumb) + ')', height: backgroundHeight}"></div>
     <div class="page-wrapper">
       <div class="content">
-    <p>我是 Ameng，过往的人生虽然并非一无是处，但也乏善可陈。苹果粉，热衷于用户体验</p>
-    <p>
-      这是一些自我陈述以及实验性垃圾存档，像是<a href=" " target="_blank" class = "inv">装置</a>，<a href=" " target="_blank" class = "inv">照片</a>，<a href=" " target="_blank" class = "inv">交互设计</a>等。
-    </p>
-    <p>
-      作品：一，二，三，四，五，六
-    </p>
-    <p>此外，有一个<a href=" " target="_blank" class = "inv">女朋友</a>和一只<a href=" " target="_blank" class = "inv">猫</a>，去过<a href=" " target="_blank" class = "inv">冰岛</a>。
-    </p>
-  </div>
-</div>
+        <p>我是 Ameng，过往的人生虽然并非一无是处，但也乏善可陈。苹果粉，热衷于用户体验</p>
+        <p>这是一些自我陈述以及实验性垃圾存档，像是<a href=" " target="_blank" class = "inv">装置</a>，<a href=" " target="_blank" class = "inv">照片</a>，<a href=" " target="_blank" class = "inv">交互设计</a>等。</p>
+        <p>作品：一，二，三，四，五，六</p>
+      </div>
+    </div>
  </div>
 </body>
+
+<script id="works-data" type="application/json">{
+  "categories":
+    [{"name":"video",
+    "works":[1,2,3,4,5,6,8,9]},
+  
+    {"name":"web",
+    "works":[10]},
+
+    {"name":"music",
+    "works":[7,11,12,13]},
+
+    {"name":"graphic design",
+    "works":[9,10],
+
+    {"name":"installation",
+    "works":[0,14]}
+    ],
+
+  "works":[
+      {"title":"第一个",
+      "url":"https://instagram.com/p/BAh-P1hAE__/",
+      "thumb":"./thumbs/adidas-whitemountaineering-fw2016.gif",
+      "categories":["installation"]},
+      
+      {"title":"第二个",
+      "url":"https://vimeo.com/140385743",
+      "thumb":"./thumbs/ghost-of-cartoon.png",
+      "thumb_portrait":"./thumbs/ghost-of-cartoon@portrait.jpg",
+      "categories":["video"]},
+
+      {"title":"第三个",
+      "url":"https://www.youtube.com/watch?v=WSFeje8-4Vc",
+      "thumb":"./thumbs/group-inou-eye.jpg",
+      "thumb_portrait":"./thumbs/group-inou-eye.jpg",
+      "categories":["video"]},
+
+      {"title":"第四个",
+      "url":"https://www.youtube.com/watch?v=7oMF9xlO93U",
+      "thumb":"./thumbs/psg.jpg",
+      "categories":["video"]},
+
+      {"title":"第五个",
+      "url":"https://www.youtube.com/watch?v=OVugWWmMADc",
+      "thumb":"./thumbs/the-chef-cooks-me.gif",
+      "categories":["video"]},
+
+      {"title":"第六个",
+      "url":"https://vimeo.com/132615030",
+      "thumb":"./thumbs/dan-ghana.png",
+      "thumb_portrait":"./thumbs/dan-ghana@portrait.jpg",
+      "categories":["video"]},
+
+      {"title":"第七个",
+      "url":"http://www.hayabusa.bz/news/2011/10/sadistic-skatepark-exhibition-20111022sat.php",
+      "thumb":"./thumbs/setcorn.jpg",
+      "thumb_portrait":"./thumbs/setcorn@portrait.jpg",
+      "categories":["installation"]}
+      ]
+}
+</script>
 </html>
