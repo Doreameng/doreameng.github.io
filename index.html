@@ -23,13 +23,31 @@
     <div class="page-wrapper">
       <div class="content">
         <p>我是 Ameng，过往的人生虽然并非一无是处，但也乏善可陈。苹果粉，热衷于用户体验</p>
-        <p>这是一些自我陈述以及实验性垃圾存档，像是<a href=" " target="_blank" class = "inv">装置</a>，<a href=" " target="_blank" class = "inv">照片</a>，<a href=" " target="_blank" class = "inv">交互设计</a>等。</p>
-        <p>作品：一，二，三，四，五，六</p>
+        <p>这是一些实验性垃圾分类，像是<a href=" " target="_blank" class = "inv">装置</a>，<a href=" " target="_blank" class = "inv">照片</a>，<a href=" " target="_blank" class = "inv">交互设计</a>等。</p>
+        <p>存档：
+          <template v-for="(work, index) in works">
+            <a class="inv" v-bind:class="{active: active.works.indexOf(index) != -1}" v-bind:href="work.url" v-on:mouseover="onHoverWork(work)" v-on:click="onClickLink(work, $event)" v-on:mouseleave="onMouseleave()" target="_blank">{{work.title}}
+            </a>
+            <span>{{ separator(index, works) }}
+            </span>
+          </template>
+        </p>
       </div>
     </div>
  </div>
 </body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
 
+</script> -->
+<script src="./index.js">
+</script>
 <script id="works-data" type="application/json">{
   "categories":
     [{"name":"video",
