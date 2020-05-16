@@ -203,44 +203,6 @@ a.inv:hover {
   -ms-flex-pack: center;
   justify-content: center;
 }
-.splash {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background: #000;
-  display: -ms-flexbox;
-  display: flex;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-a.splash__wrapper {
-  width: 60%;
-  height: 60%;
-  margin: 0 auto;
-  display: block;
-  box-shadow: none;
-  background: 0 0;
-}
-.splash__thumb {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  background-position: 50% 50%;
-}
-a:active .splash__thumb,
-a:hover .splash__thumb {
-  filter: contrast(0.3) brightness(1.5);
-}
-.splash__links {
-  margin-top: 2em;
-  text-align: center;
-}
 .mobile .title-wrapper {
   position: absolute;
   top: 0;
