@@ -83,8 +83,8 @@
 
     {"title":"光之矩阵",
     "url":"",
-    "thumb":"./thumbs/ghost-of-cartoon.png",
-    "thumb_portrait":"./thumbs/ghost-of-cartoon@portrait.jpg",
+    "thumb":"./thumbs/lightmatrix.jpg",
+    "thumb_portrait":"./thumbs/lightmatrix_portrait.jpeg",
     "categories":["装置"]},
 
     {"title":"Screen Time - Redesign",
@@ -100,7 +100,8 @@
 
     {"title":"他他",
     "url":"",
-    "thumb":"./thumbs/the-chef-cooks-me.gif",
+    "thumb":"./thumbs/cat.jpeg",
+    "thumb_portrait":"./thumbs/cat_portrait.jpeg",
     "categories":["照片"]},
 
     {"title":"拍立得",
@@ -156,7 +157,11 @@
         this.active.thumb = e.thumb,
         this.active.thumbPortrait = e.thumb_portrait || e.thumb,
         this.active.categories = e.categories
-      }
+      },
+      onClickLink: function(e, t) {
+                    // f && this.active.object != e && t.preventDefault(),
+                    this.active.object = e
+                }
     }
   });
 
