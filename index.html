@@ -1,145 +1,165 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Ameng</title>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ameng's self website.">
-  <meta name="keywords" lang="en" xml:lang="en" content="Ameng">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ameng's self website." />
+  <meta name="keywords" lang="en" xml:lang="en" content="Ameng" />
 
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<!--   <link href="https://fonts.googleapis.com/css?family=Rubik:300,500,700" rel="stylesheet"> -->
+  <!--   <link href="https://fonts.googleapis.com/css?family=Rubik:300,500,700" rel="stylesheet"> -->
 </head>
 <body>
   <div class="top-page centerize">
-    <div class="background" ></div>
+    <div class="background" 
+    v-bind:class="{hidden: backgroundHidden}" 
+    v-bind:style="{backgroundImage: 'url(' + (portrait ? active.thumbPortrait : active.thumb) + ')', height: backgroundHeight}"></div>
     <div class="page-wrapper">
       <div class="content">
-        <p>我是 Ameng，过往的人生虽然并非一无是处，但也乏善可陈。苹果粉，热衷于用户体验</p>
-        <p>这是一些实验性垃圾分类，像是
+        <p>
+          我是
+          Ameng，过往的人生虽然并非一无是处，但也乏善可陈。苹果粉，热衷于用户体验
+        </p>
+        <p>
+          这是一些实验性垃圾分类，像是
           <template v-for="(category, index) in categories">
-            <a class="inv" v-bind:class="{active: active.categories.indexOf(category.name) != -1}" 
-            v-on:mouseover="onHoverCategory(category)" 
-            v-on:mouseleave="onMouseleave()">{{category.name}}
-            </a>
-            <span>{{ separator(index, categories) }}
-            </span>
+            <a
+            class="inv"
+            v-bind:class="{active: active.categories.indexOf(category.name) != -1}"
+            v-on:mouseover="onHoverCategory(category)"
+            v-on:mouseleave="onMouseleave()"
+            >{{category.name}}
+          </a>
+          <span>{{ separator(index, categories) }}
           </template>
         </p>
-        <p>存档：
+        <p>
+          存档：
           <template v-for="(work, index) in works">
-            <a class="inv" v-bind:class="{active: active.works.indexOf(index) != -1}" 
-            v-bind:href="work.url" 
+            <a
+            class="inv"
+            v-bind:href="work.url"
+            v-bind:class="{active: active.works.indexOf(index) != -1}" 
             v-on:mouseover="onHoverWork(work)" 
+            v-on:click="onClickLink(work, $event)" 
             v-on:mouseleave="onMouseleave()" 
-            target="_blank">{{work.title}}
-            </a>
-            <span>{{ separator(index, works) }}
-            </span>
-          </template>
-        </p>
-      </div>
+            target="_blank"
+            >{{work.title}}
+          </a>
+          <span>{{ separator(index, works) }} </span>
+        </template>
+      </p>
     </div>
- </div>
-</body>
+  </div>
+</div>
+<script id="works-data" type="application/json">
+  {
+    "categories":
+    [{"name":"网页",
+    "works":[0]},
 
+    {"name":"交互设计",
+    "works":[1]},
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script type="text/javascript">
-  var e = JSON.parse(document.getElementById("works-data").innerText),
-      app = new Vue({
-        el: '.top-page',
-        data: {
-          categories: e.categories,
-          works: e.works,
-          portrait: !1,
-          titleHeight: null,
-          backgroundHeight: "inherit",
-          backgroundHidden: !1,
-          contentOverflow: !0,
-          active: {
-            object: null,
-            thumb: "",
-            thumbPortrait: "",
-            categories: [],
-            works: [],
-          }
-        }
-        methods: {
-          separator: function(index, totalData) {
-            var n = totalData.length;
-            return index < n - 2 ? ", " : index == n - 2 ? ", and " : "."
-          },
-          onHoverCategory: function(e){
-            this.active.works = e.works,
-            this.active.members = e.members
-          },
-        }
-})
+    {"name":"装置",
+    "works":[2]},
 
-</script>
+    {"name":"应用",
+    "works":[2]},
 
-<script id="works-data" type="application/json">{
-  "categories":
-    [{"name":"video",
-    "works":[1,2,3,4,5,6,8,9]},
-  
-    {"name":"web",
-    "works":[10]},
-
-    {"name":"music",
-    "works":[7,11,12,13]},
-
-    {"name":"graphic design",
-    "works":[9,10],
-
-    {"name":"installation",
-    "works":[0,14]}
+    {"name":"照片",
+    "works":[3]}
     ],
 
-  "works":[
-      {"title":"第一个",
-      "url":"https://instagram.com/p/BAh-P1hAE__/",
-      "thumb":"./thumbs/adidas-whitemountaineering-fw2016.gif",
-      "categories":["installation"]},
-      
-      {"title":"第二个",
-      "url":"https://vimeo.com/140385743",
-      "thumb":"./thumbs/ghost-of-cartoon.png",
-      "thumb_portrait":"./thumbs/ghost-of-cartoon@portrait.jpg",
-      "categories":["video"]},
+    "works":
+    [{"title":"个人主页",
+    "url":"ultrameng.com",
+    "thumb":"./thumbs/adidas-whitemountaineering-fw2016.gif",
+    "categories":["网页"]},
 
-      {"title":"第三个",
-      "url":"https://www.youtube.com/watch?v=WSFeje8-4Vc",
-      "thumb":"./thumbs/group-inou-eye.jpg",
-      "thumb_portrait":"./thumbs/group-inou-eye.jpg",
-      "categories":["music"]},
+    {"title":"光之矩阵",
+    "url":"",
+    "thumb":"./thumbs/ghost-of-cartoon.png",
+    "thumb_portrait":"./thumbs/ghost-of-cartoon@portrait.jpg",
+    "categories":["装置"]},
 
-      {"title":"第四个",
-      "url":"https://www.youtube.com/watch?v=7oMF9xlO93U",
-      "thumb":"./thumbs/psg.jpg",
-      "categories":["web"]},
+    {"title":"Screen Time - Redesign",
+    "url":"",
+    "thumb":"./thumbs/group-inou-eye.jpg",
+    "thumb_portrait":"./thumbs/group-inou-eye.jpg",
+    "categories":["交互设计"]},
 
-      {"title":"第五个",
-      "url":"https://www.youtube.com/watch?v=OVugWWmMADc",
-      "thumb":"./thumbs/the-chef-cooks-me.gif",
-      "categories":["video"]},
+    {"title":"VUI",
+    "url":"",
+    "thumb":"./thumbs/psg.jpg",
+    "categories":["交互设计"]},
 
-      {"title":"第六个",
-      "url":"https://vimeo.com/132615030",
-      "thumb":"./thumbs/dan-ghana.png",
-      "thumb_portrait":"./thumbs/dan-ghana@portrait.jpg",
-      "categories":["video"]},
+    {"title":"他他",
+    "url":"",
+    "thumb":"./thumbs/the-chef-cooks-me.gif",
+    "categories":["照片"]},
 
-      {"title":"第七个",
-      "url":"http://www.hayabusa.bz/news/2011/10/sadistic-skatepark-exhibition-20111022sat.php",
-      "thumb":"./thumbs/setcorn.jpg",
-      "thumb_portrait":"./thumbs/setcorn@portrait.jpg",
-      "categories":["installation"]}
-      ]
-}
+    {"title":"拍立得",
+    "url":"",
+    "thumb":"./thumbs/dan-ghana.png",
+    "thumb_portrait":"./thumbs/dan-ghana@portrait.jpg",
+    "categories":["照片"]},
+
+    {"title":"冰岛",
+    "url":"",
+    "thumb":"./thumbs/setcorn.jpg",
+    "thumb_portrait":"./thumbs/setcorn@portrait.jpg",
+    "categories":["照片"]}
+    ]
+  }
 </script>
+
+<script type="text/javascript">
+  var e = JSON.parse(document.getElementById("works-data").innerText),
+  app = new Vue({
+    el: ".top-page",
+    data: {
+      categories: e.categories,
+      works: e.works,
+      portrait: !1,
+      titleHeight: null,
+      backgroundHeight: "inherit",
+      backgroundHidden: !1,
+      contentOverflow: !0,
+      active: {
+        object: null,
+        thumb: "",
+        thumbPortrait: "",
+        categories: [],
+        works: [],
+      }
+    },
+    methods: {
+      separator: function(e, t) {
+        var n = t.length;
+        return e < n - 2 ? ", " : e == n - 2 ? ", 和 " : "."
+      },
+      onHoverCategory: function(e){
+        this.active.works = e.works
+      },
+      onMouseleave: function() {
+        this.active.thumb = "",
+        this.active.thumbPortrait = "",
+        this.active.categories = [],
+        this.active.works = []
+      },
+      onHoverWork: function(e) {
+        this.active.thumb = e.thumb,
+        this.active.thumbPortrait = e.thumb_portrait || e.thumb,
+        this.active.categories = e.categories
+      }
+    }
+  });
+
+</script>
+</body>
 </html>
